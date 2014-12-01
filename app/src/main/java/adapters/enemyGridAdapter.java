@@ -9,24 +9,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import data.DataHandler;
+import data.Unit;
+
 import com.chalmers.ehrndal.heroesofwar.R;
 
 /**
  * Created by ehrndal on 27/11/14.
  */
-public class TroopGridAdapter extends BaseAdapter {
+public class EnemyGridAdapter extends BaseAdapter {
     private Context mContext;
     private DataHandler dH;
     private int layoutId;
+    private Unit[] enemyUnits;
 
-    public TroopGridAdapter(Context c, int layoutId) {
+    public EnemyGridAdapter(Context c, int layoutId, Unit[] units) {
         mContext = c;
         this.layoutId = layoutId;
+        enemyUnits = units;
         dH = new DataHandler().getInstance();
     }
 
     public int getCount() {
-        return dH.getUnits().length;
+        return enemyUnits.length;
     }
 
     public Object getItem(int position) {
@@ -44,8 +48,25 @@ public class TroopGridAdapter extends BaseAdapter {
 
         ImageView img = (ImageView) view.findViewById(R.id.imageView);
         TextView num = (TextView) view.findViewById(R.id.numUnits);
-        img.setImageResource(dH.getUnits()[position].getIconId());
-        num.setText((dH.getUnits()[position].getDisplayNr()));
+        img.setImageResource(enemyUnits[position].getIconId());
+        num.setText(getText(position));
         return view;
+    }
+
+    private String getText(int pos){
+        int i = enemyUnits[pos].Count();
+        if(i < 5)
+            return "Few";
+        else if(i < 10)
+            return "Several";
+        else if(i < 25)
+            return "Pack";
+        else if(i < 50)
+            return "Horde";
+        else if(i < 100)
+            return "Throng";
+        else if(i < 200)
+            return "Army";
+        else return "Crazy";
     }
 }

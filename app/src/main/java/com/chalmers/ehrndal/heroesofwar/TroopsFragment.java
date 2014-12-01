@@ -36,7 +36,7 @@ public class TroopsFragment extends Fragment {
         dH = DataHandler.getInstance();
         troopsView = (GridView) v.findViewById(R.id.troopsView);
         unitInfoView = (GridView) v.findViewById(R.id.unitInfoView);
-        troopAdapter = new TroopGridAdapter(getActivity());
+        troopAdapter = new TroopGridAdapter(getActivity(), R.layout.troop_item);
         infoAdapter = new UnitInfoAdapter(getActivity());
         troopsView.setAdapter(troopAdapter);
         unitInfoView.setAdapter(infoAdapter);
