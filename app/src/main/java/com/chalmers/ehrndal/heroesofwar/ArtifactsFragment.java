@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import adapters.ArtifactAdapter;
 import data.NoUnitInSlot;
 
@@ -22,6 +24,9 @@ public class ArtifactsFragment extends Fragment {
     private GridView artifactGridView;
     private TextView artifactName;
     private TextView artifactEffect;
+    private View effectBkgrnd;
+    private TextView effectLbl;
+    private TextView artifactLbl;
 
     public ArtifactsFragment(){}
 
@@ -32,6 +37,9 @@ public class ArtifactsFragment extends Fragment {
         artifactGridView = (GridView) v.findViewById(R.id.artifactGridView);
         artifactName = (TextView) v.findViewById(R.id.artifactName);
         artifactEffect = (TextView) v.findViewById(R.id.effectDesc);
+        effectBkgrnd = (View) v.findViewById(R.id.effectBkgrnd);
+        effectLbl = (TextView) v.findViewById(R.id.effectLbl);
+        artifactLbl = (TextView) v.findViewById(R.id.artifactLbl);
 
         adapter = new ArtifactAdapter(getActivity());
         artifactGridView.setAdapter(adapter);
@@ -39,9 +47,12 @@ public class ArtifactsFragment extends Fragment {
         artifactGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               view.setSelected(true);
-               artifactName.setText(name[position]);
-               artifactEffect.setText(effect[position]);
+                view.setSelected(true);
+                artifactLbl.setText("Artifact: ");
+                effectLbl.setText("Effect");
+                effectBkgrnd.setVisibility(View.VISIBLE);
+                artifactName.setText(name[position]);
+                artifactEffect.setText(effect[position]);
             }
         });
 
