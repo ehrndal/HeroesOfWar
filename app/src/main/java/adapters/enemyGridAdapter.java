@@ -1,6 +1,7 @@
 package adapters;
 
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +19,14 @@ import com.chalmers.ehrndal.heroesofwar.R;
  */
 public class EnemyGridAdapter extends BaseAdapter {
     private Context mContext;
-    private DataHandler dH;
+    private DataHandler dH = DataHandler.getInstance();
     private int layoutId;
     private Unit[] enemyUnits;
 
-    public EnemyGridAdapter(Context c, int layoutId, Unit[] units) {
+    public EnemyGridAdapter(Context c, int layoutId) {
         mContext = c;
         this.layoutId = layoutId;
-        enemyUnits = units;
-        dH = new DataHandler().getInstance();
+        enemyUnits = dH.getEnemyUnits();
     }
 
     public int getCount() {
@@ -45,7 +45,7 @@ public class EnemyGridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layoutId, parent, false);
-
+        enemyUnits = dH.getEnemyUnits();
         ImageView img = (ImageView) view.findViewById(R.id.imageView);
         TextView num = (TextView) view.findViewById(R.id.numUnits);
         img.setImageResource(enemyUnits[position].getIconId());
@@ -55,7 +55,9 @@ public class EnemyGridAdapter extends BaseAdapter {
 
     private String getText(int pos){
         int i = enemyUnits[pos].Count();
-        if(i < 5)
+        if(i == 0)
+            return "Dead";
+        else if(i < 5)
             return "Few";
         else if(i < 10)
             return "Several";

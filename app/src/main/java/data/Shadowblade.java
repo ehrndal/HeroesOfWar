@@ -10,11 +10,12 @@ import com.chalmers.ehrndal.heroesofwar.R;
 public class Shadowblade implements Unit {
     private int iconId = R.drawable.ic_orc_shadowblade;
     private int nrOfUnits = 0;
-    private static Pair<Integer,Integer> attack = new Pair(30,30);
+    private static Pair<Integer,Integer> attack = new Pair(25,30);
     private static int health = 110;
     private static int defense = 13;
     private static int speed = 5;
     private static int movement = 4;
+    private int remainingHealth = 0;
     private static boolean isRanged = false;
     private static int price = 1100;
 
@@ -93,5 +94,15 @@ public class Shadowblade implements Unit {
     @Override
     public String getName() {
         return "Shadowblade";
+    }
+
+    @Override
+    public int getRemainingHealth() {
+        return remainingHealth;
+    }
+
+    @Override
+    public void setRemainingHealth(int i) {
+        remainingHealth = i;
     }
 }

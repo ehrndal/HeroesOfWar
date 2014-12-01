@@ -14,6 +14,7 @@ public class Rogue implements Unit {
     private static Pair<Integer,Integer> attack = new Pair(40,60);
     private static int health = 150;
     private static int defense = 16;
+    private int remainingHealth = 0;
     private static int speed = 7;
     private static int movement = 6;
     private static boolean isRanged = false;
@@ -94,5 +95,15 @@ public class Rogue implements Unit {
     @Override
     public String getName() {
         return "Rogue";
+    }
+
+    @Override
+    public int getRemainingHealth() {
+        return remainingHealth;
+    }
+
+    @Override
+    public void setRemainingHealth(int i) {
+        remainingHealth = i;
     }
 }

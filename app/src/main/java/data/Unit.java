@@ -19,4 +19,6 @@ public interface Unit {
     public String getDisplayNr();
     public String[] getStats();
     public String getName();
+    public int getRemainingHealth();
+    public void setRemainingHealth(int i);
 }

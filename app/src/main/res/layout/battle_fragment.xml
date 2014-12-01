@@ -46,6 +46,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/enemyGridView"
         android:layout_marginTop="20dp"
+        android:id="@+id/fightButton"
         style="?android:attr/borderlessButtonStyle"/>
 
     <GridView

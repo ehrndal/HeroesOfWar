@@ -13,6 +13,7 @@ public class Wizard implements Unit {
     private static Pair<Integer,Integer> attack = new Pair(16,20);
     private static int health = 70;
     private static int defense = 12;
+    private int remainingHealth = 0;
     private static int speed = 6;
     private static int movement = 5;
     private static boolean isRanged = true;
@@ -93,5 +94,15 @@ public class Wizard implements Unit {
     @Override
     public String getName() {
         return "Wizard";
+    }
+
+    @Override
+    public int getRemainingHealth() {
+        return remainingHealth;
+    }
+
+    @Override
+    public void setRemainingHealth(int i) {
+        remainingHealth = i;
     }
 }

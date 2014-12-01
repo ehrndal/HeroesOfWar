@@ -1,20 +1,37 @@
 package data;
 
+import java.util.ArrayList;
+
 /**
  * Created by ehrndal on 28/11/14.
  */
 public class DataHandler {
 
     private static DataHandler instance = null;
-    private int gold = 10000;
+    private int gold = 30000;
     private Unit[] units;
+    private Unit[] enemyUnits;
     private int armySize = 6;
 
     public DataHandler(){
+        initEnemyUnits();
         units = new Unit[6];
         for(int i = 0; i<units.length;i++){
             units[i] = new NoUnitInSlot();
         }
+    }
+
+    public Unit[] getEnemyUnits(){
+        return enemyUnits;
+    }
+
+    public void setEnemyUnits(ArrayList<Unit> units){
+        enemyUnits[0] = units.get(0);
+        enemyUnits[1] = units.get(1);
+        enemyUnits[2] = units.get(2);
+        enemyUnits[3] = units.get(3);
+        enemyUnits[4] = units.get(4);
+        enemyUnits[5] = units.get(5);
     }
 
     public Unit[] getUnits(){
@@ -56,5 +73,27 @@ public class DataHandler {
         u[4] = new Wizard();
         u[5] = new Rogue();
         return u;
+    }
+
+    private void initEnemyUnits(){
+            enemyUnits = new Unit[6];
+            Orc o = new Orc();
+            o.updateUnit(120);
+            enemyUnits[0] = o;
+            Orc o2 = new Orc();
+            o2.updateUnit(55);
+            enemyUnits[1] = o2;
+            Brute b = new Brute();
+            b.updateUnit(15);
+            enemyUnits[2] = b;
+            Shadowblade s = new Shadowblade();
+            s.updateUnit(3);
+            enemyUnits[3] = s;
+            Wizard w = new Wizard();
+            w.updateUnit(9);
+            enemyUnits[4] = w;
+            Barbarian barb = new Barbarian();
+            barb.updateUnit(22);
+            enemyUnits[5] = barb;
     }
 }

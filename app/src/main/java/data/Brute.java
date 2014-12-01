@@ -17,6 +17,7 @@ public class Brute implements Unit {
     private static int speed = 7;
     private static int movement = 6;
     private static boolean isRanged = false;
+    private int remainingHealth = 0;
     private static int price = 550;
 
     @Override
@@ -92,5 +93,15 @@ public class Brute implements Unit {
     @Override
     public String getName() {
         return "Brute";
+    }
+
+    @Override
+    public int getRemainingHealth() {
+        return remainingHealth;
+    }
+
+    @Override
+    public void setRemainingHealth(int i) {
+        remainingHealth = i;
     }
 }

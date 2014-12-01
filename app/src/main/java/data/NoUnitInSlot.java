@@ -78,4 +78,15 @@ public class NoUnitInSlot implements Unit {
     public String getName() {
         return null;
     }
+
+
+    @Override
+    public int getRemainingHealth() {
+        return 0;
+    }
+
+    @Override
+    public void setRemainingHealth(int i) {
+        // do nothing
+    }
 }

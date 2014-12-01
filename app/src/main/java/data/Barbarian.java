@@ -16,6 +16,7 @@ public class Barbarian implements Unit {
     private static int speed = 3;
     private static int movement = 3;
     private static boolean isRanged = false;
+    private int remainingHealth = 0;
     private static int price = 150;
 
     public Barbarian(){};
@@ -94,6 +95,16 @@ public class Barbarian implements Unit {
     @Override
     public String getName() {
         return "Barbarian";
+    }
+
+    @Override
+    public int getRemainingHealth() {
+        return remainingHealth;
+    }
+
+    @Override
+    public void setRemainingHealth(int i) {
+        remainingHealth = i;
     }
 
 }

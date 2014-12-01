@@ -17,6 +17,7 @@ public class Orc implements Unit {
     private static int movement = 3;
     private static boolean isRanged = false;
     private static int price = 40;
+    private int remainingHealth = 0;
 
     public Orc(){
     };
@@ -96,5 +97,15 @@ public class Orc implements Unit {
     @Override
     public String getName() {
         return "Orc";
+    }
+
+    @Override
+    public int getRemainingHealth() {
+        return remainingHealth;
+    }
+
+    @Override
+    public void setRemainingHealth(int i) {
+        remainingHealth = i;
     }
 }
