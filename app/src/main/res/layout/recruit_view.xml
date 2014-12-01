@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/goldLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your gold: "
+            android:textSize="20dp"
+            android:textColor="@color/color_selected"/>
+        <TextView
+            android:id="@+id/goldAmountLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20dp"
+            android:textColor="@color/color_selected"/>
+        <ImageView
+            android:id="@+id/goldIcn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_gold"
+            android:layout_alignTop="@+id/cost"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/recruitGrid"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

@@ -1,0 +1,141 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/dialogTitle"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/textView"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/iconUnit"
+        android:src="@drawable/ic_orc"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/numUnitsLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/unitsLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Units"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/totalClost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0"
+                android:textSize="20dp"/>
+
+            <ImageView
+                android:id="@+id/goldTotalCost"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_gold"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <SeekBar
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/red_scrubber_progress"
+        android:thumb="@drawable/red_scrubber_control"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/seekBar"
+        android:progress="1"
+        android:max="100"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="#ff740400"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignLeft="@+id/unitAttack"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/unitName" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:id="@+id/cButton"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:onClick="cancel"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/troops_color_selector"/>
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="2dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="#ff740400"
+                android:layout_alignLeft="@+id/unitAttack"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/unitName" />
+            <Button
+                android:id="@+id/bButton"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                android:onClick="buyTroops"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/troops_color_selector"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

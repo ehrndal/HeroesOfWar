@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/troops_color_selector">
+
+    <ImageView
+        android:id="@+id/unitIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_orc"/>
+    <TextView
+        android:id="@+id/unitName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="20dp"
+        android:text="Orc"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/unitIcon"
+        android:layout_toEndOf="@+id/unitIcon"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="40"
+        android:layout_marginRight="30dp"
+        android:layout_alignTop="@+id/unitName"
+        android:layout_alignRight="@+id/goldIcon" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_alignLeft="@+id/unitAttack"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/unitName" />
+
+    <ImageView
+        android:id="@+id/unitAttack"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_attack"
+        android:layout_below="@+id/unitName"
+        android:layout_alignLeft="@+id/unitName"
+        android:layout_alignStart="@+id/unitName" />
+
+    <TextView
+        android:id="@+id/unitAttackLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:text="1-2"
+        android:layout_toEndOf="@+id/unitAttack"
+        android:layout_alignTop="@+id/unitAttack"
+        android:layout_toRightOf="@+id/unitAttack" />
+
+    <ImageView
+        android:id="@+id/unitHealth"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_health"
+        android:layout_marginLeft="70dp"
+        android:layout_alignTop="@+id/unitAttackLbl"
+        android:layout_toRightOf="@+id/unitAttack"
+        android:layout_toEndOf="@+id/unitAttackLbl" />
+
+    <TextView
+        android:id="@+id/unitHealthLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginLeft="5dp"
+        android:text="40"
+        android:layout_toEndOf="@+id/unitHealth"
+        android:layout_alignTop="@+id/unitHealth"
+        android:layout_toRightOf="@+id/unitHealth" />
+
+    <ImageView
+        android:id="@+id/unitDefense"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="35dp"
+        android:src="@drawable/ic_defense"
+        android:layout_toEndOf="@+id/unitHealthLbl"
+        android:layout_alignTop="@+id/unitHealthLbl"
+        android:layout_toRightOf="@+id/unitHealthLbl" />
+
+    <TextView
+        android:id="@+id/unitDefenseLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:text="10"
+        android:layout_toEndOf="@+id/unitDefense"
+        android:layout_alignTop="@+id/unitDefense"
+        android:layout_toRightOf="@+id/unitDefense" />
+
+    <ImageView
+        android:id="@+id/unitIsRanged"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_ranged"
+        android:layout_below="@+id/unitAttack"
+        android:layout_toRightOf="@+id/unitIcon"
+        android:layout_toEndOf="@+id/unitIcon" />
+
+    <TextView
+        android:id="@+id/unitRangedLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:text="False"
+        android:layout_toEndOf="@+id/unitIsRanged"
+        android:layout_alignTop="@+id/unitIsRanged"
+        android:layout_toRightOf="@+id/unitIsRanged" />
+
+    <ImageView
+        android:id="@+id/unitMovement"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_movement"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/unitHealth"
+        android:layout_alignLeft="@+id/unitHealth"
+        android:layout_alignStart="@+id/unitHealth" />
+
+    <TextView
+        android:id="@+id/unitMovementbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:text="7"
+        android:layout_alignTop="@+id/unitMovement"
+        android:layout_alignLeft="@+id/unitHealthLbl"
+        android:layout_alignStart="@+id/unitHealthLbl" />
+
+    <ImageView
+        android:id="@+id/unitSpeed"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_speed"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/unitDefense"
+        android:layout_alignLeft="@+id/unitDefense"
+        android:layout_alignStart="@+id/unitDefense" />
+
+    <TextView
+        android:id="@+id/unitSpeedLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="10"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/unitSpeed"
+        android:layout_alignTop="@+id/unitSpeed"
+        android:layout_toRightOf="@+id/unitSpeed" />
+
+    <ImageView
+        android:id="@+id/goldIcon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/ic_gold"
+        android:layout_alignTop="@+id/cost"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>
