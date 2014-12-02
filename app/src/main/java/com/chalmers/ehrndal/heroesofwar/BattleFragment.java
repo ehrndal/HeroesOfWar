@@ -4,11 +4,13 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import adapters.EnemyGridAdapter;
 import adapters.TroopGridAdapter;
@@ -18,7 +20,9 @@ import data.Brute;
 import data.DataHandler;
 import data.Orc;
 import data.Rogue;
+import data.Round;
 import data.Shadowblade;
+import data.StatisticsHandler;
 import data.Unit;
 import data.Wizard;
 
@@ -33,7 +37,15 @@ public class BattleFragment extends Fragment{
     private GridView enemyGridView;
     private Button fightButton;
     private CombatController cC;
-    private DataHandler dH = new DataHandler().getInstance();
+    private DataHandler dH = DataHandler.getInstance();
+    private TextView resultDamage1;
+    private TextView resultDamage2;
+    private TextView resultDamage3;
+    private TextView resultDamage4;
+    private TextView resultDamage5;
+    private TextView resultDamage6;
+    private Round round;
+    private StatisticsHandler sH = StatisticsHandler.getInstance();
 
     public BattleFragment(){}
 
@@ -44,12 +56,21 @@ public class BattleFragment extends Fragment{
         playerGridView = (GridView) v.findViewById(R.id.playerGridView);
         enemyGridView = (GridView) v.findViewById(R.id.enemyGridView);
         fightButton = (Button) v.findViewById(R.id.fightButton);
+        resultDamage1 = (TextView) v.findViewById(R.id.enemyResult1);
+        resultDamage2 = (TextView) v.findViewById(R.id.enemyResult2);
+        resultDamage3 = (TextView) v.findViewById(R.id.enemyResult3);
+        resultDamage4 = (TextView) v.findViewById(R.id.enemyResult4);
+        resultDamage5 = (TextView) v.findViewById(R.id.enemyResult5);
+        resultDamage6 = (TextView) v.findViewById(R.id.enemyResult6);
+
+        cC = new CombatController(dH.getUnits(), dH.getEnemyUnits());
 
         fightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cC = new CombatController(dH.getUnits(), dH.getEnemyUnits());
+                round = cC.playRound();
                 adapter.notifyDataSetChanged();
+                updateDamageDoneText();
                 enemyAdapter.notifyDataSetChanged();
             }
         });
@@ -74,5 +95,21 @@ public class BattleFragment extends Fragment{
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private void updateDamageDoneText(){
+        trySetText(resultDamage1, 0);
+        trySetText(resultDamage2, 1);
+        trySetText(resultDamage3, 2);
+        trySetText(resultDamage4, 3);
+        trySetText(resultDamage5, 4);
+        trySetText(resultDamage6, 5);
+    }
+
+    private void trySetText(TextView view, int pos){
+        if(round.getDamageDone()[pos] != null)
+            view.setText(Integer.toString(round.getDamageDone()[pos]));
+        else
+            view.setText("");
     }
 }

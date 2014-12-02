@@ -5,11 +5,14 @@ import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.jar.Attributes;
 
 import data.DataHandler;
 import data.NoUnitInSlot;
+import data.Round;
+import data.StatisticsHandler;
 import data.Unit;
 
 /**
@@ -22,15 +25,15 @@ public class CombatController {
     private ArrayList<Pair<String, Integer>> combatOrder;
     private DataHandler dH = new DataHandler();
     private CombatGenerator cG = CombatGenerator.getInstance();
+    private StatisticsHandler sH = StatisticsHandler.getInstance();
+    private Random rand;
 
     public CombatController(Unit[] playerUnits, Unit[] enemyUnits){
         this.enemyUnits = filterUnits(enemyUnits);
         this.playerUnits = filterUnits(playerUnits);
         combatOrder = new ArrayList<Pair<String, Integer>>();
         generateOrder();
-        playRound();
         dH.setEnemyUnits(this.enemyUnits);
-        Log.d("Combat order", combatOrder.toString());
     }
 
     private ArrayList<Unit> filterUnits(Unit[] units){
@@ -42,7 +45,8 @@ public class CombatController {
         return u;
     }
 
-    private void playRound(){
+    public Round playRound(){
+        Round round = new Round(playerUnits, enemyUnits);
         Unit att;
         Pair<Unit, Integer> def;
         for(int i = 0; i< combatOrder.size(); i++){
@@ -52,16 +56,21 @@ public class CombatController {
                 if (combatOrder.get(i).first.equals("p")) {
                     att = playerUnits.get(combatOrder.get(i).second);
                     def = getDefUnit(enemyUnits);
-                    cG.generateAttack(att, def.first);
+                    Pair<Integer, Integer> info = cG.generateAttack(att, def.first);
+                    round.setDamageDone(def.second, info.first);
                     enemyUnits.set(def.second, def.first);
                 } else {
                     att = enemyUnits.get(combatOrder.get(i).second);
                     def = getDefUnit(playerUnits);
-                    cG.generateAttack(att, def.first);
+                    Pair<Integer,Integer> info = cG.generateAttack(att, def.first);
+                    round.setDamageTaken(def.second,info.first);
+                    round.setUnitsLost(def.second, info.second);
                     playerUnits.set(def.second, def.first);
                 }
             }
         }
+        sH.addRound(round);
+        return round;
     }
 
     public void generateOrder(){
@@ -93,12 +102,13 @@ public class CombatController {
     }
 
     private Pair<Unit,Integer> getDefUnit(ArrayList<Unit> units){
-        for(int i = 0; i < units.size(); i ++){
+        while(true){
+            rand = new Random();
+            int i = rand.nextInt(units.size());
             if(units.get(i).Count() > 0){
                 return new Pair(units.get(i),i);
             }
         }
-        return new Pair(new NoUnitInSlot(),0);
     }
 
     private boolean gameOver(ArrayList<Unit> units){

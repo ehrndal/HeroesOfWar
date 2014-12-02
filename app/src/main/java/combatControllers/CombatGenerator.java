@@ -23,10 +23,11 @@ public class CombatGenerator {
 
     }
 
-    public void generateAttack(Unit attacker, Unit defender){
+    public Pair<Integer, Integer> generateAttack(Unit attacker, Unit defender){
         int damage = getBaseDamage(attacker.getAttack());
         damage*=attacker.Count();
-        calcLosses(defender, damage);
+        int losses = calcLosses(defender, damage);
+        return new Pair(damage,losses);
     }
 
     public static CombatGenerator getInstance(){
@@ -43,7 +44,7 @@ public class CombatGenerator {
         return rand.nextInt(high - low) + low;
     }
 
-    private Unit calcLosses(Unit unit, int damage){
+    private int calcLosses(Unit unit, int damage){
         int lossedUnits = 0;
         if(unit.getRemainingHealth() != 0){
             damage-= unit.getRemainingHealth();
@@ -61,6 +62,6 @@ public class CombatGenerator {
         else
             unit.setRemainingHealth(0);
 
-        return unit;
+        return lossedUnits;
     }
 }
